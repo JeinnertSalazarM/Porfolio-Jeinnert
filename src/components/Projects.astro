@@ -1,0 +1,78 @@
+---
+import Boostrap from "../icons/Boostrap.astro";
+import CSS from "../icons/CSS.astro";
+import Django from "../icons/Django.astro";
+import Html from "../icons/Html.astro";
+import JavaScript from "../icons/JavaScript.astro";
+import Tailwind from "../icons/Tailwind.astro";
+
+
+
+const TAGS = {
+    HTML: {
+        name: "HTML",
+        class: "bg-orange-500 text-white",
+        icon: Html,
+    },
+    Bootstrap: {
+        name: "Bootstrap",
+        class: "bg-purple-500 text-white",
+        icon: Boostrap,
+    },
+    CSS: {
+        name: "CSS",
+        class: "bg-blue-500 text-white",
+        icon: CSS,
+    },
+    TailwindCSS: {
+        name: "Tailwind CSS",
+        class: "bg-teal-500 text-white",
+        icon: Tailwind,
+    },
+    JavaScript: {
+        name: "JavaScript",
+        class: "bg-yellow-500 text-black",
+        icon: JavaScript,
+    },
+    Django: {
+        name: "Django",
+        class: "bg-green-500 text-white",
+        icon: Django,
+    }
+}
+
+const PROYECTS = [
+    {
+        title: "Gestor de Proyectos",
+        description: "Aplicación web desarrollada con Django para organizar y gestionar proyectos de manera eficiente. Permite crear, supervisar y visualizar el progreso de proyectos en tiempo real, con una interfaz intuitiva y responsive diseñada con Bootstrap. Ideal para equipos que buscan simplicidad y control en sus procesos.",
+        link: "#",
+        github: "#",
+        image: "/public/projects/gestorproyectos.webp",
+        tags: [TAGS.HTML,TAGS.CSS, TAGS.JavaScript , TAGS.Bootstrap,TAGS.Django, ],
+    },
+    // Añade más proyectos aquí
+];
+
+---
+
+{
+    PROYECTS.map(({ title, description, image, tags}) => (
+        <article>
+            <h3 class="text-2xl font-semibold text-green-300 mb-2 ">{title}</h3>
+            <p class="text-lg mb-4 text-pretty">{description}</p>
+            <ul class="flex gap-2 mb-4 flex-row flex-wrap"> 
+                {
+                    tags.map((tag) => (
+                        <li> 
+                            <span class="flex items-center flex-row gap-2 p-1 px-2 rounded-full text-xs ${tag.class}" >
+                                <tag.icon ></tag.icon>
+                                {tag.name}
+                            </span>
+                        </li>
+                    ))
+                }
+            </ul>
+            <img class="rounded shadow-2xl shadow-white/10" src={image} alt={`Captura de pantalla del Proyecto ${image}`} />
+        </article>
+    ))
+}
