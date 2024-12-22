@@ -29,12 +29,12 @@ const TAGS = {
   },
   JavaScript: {
     name: "JavaScript",
-    class: "bg-yellow-500 text-black",
+    class: "bg-yellow-500 text-white",
     icon: JavaScript,
   },
   Django: {
     name: "Django",
-    class: "bg-green-500 text-white",
+    class: "bg-green-400 text-white",
     icon: Django,
   },
 };
@@ -49,7 +49,7 @@ const PROYECTS = [
     image: "/projects/gestorproyectos.webp",
     tags: [TAGS.HTML, TAGS.CSS, TAGS.JavaScript, TAGS.Bootstrap, TAGS.Django],
   },
-  // Añade más proyectos aquí
+  
 ];
 ---
 
@@ -61,7 +61,7 @@ const PROYECTS = [
       <ul class="flex gap-2 mb-4 flex-row  justify-center flex-wrap">
         {tags.map((tag) => (
           <li>
-            <span class='flex items-center    flex-row gap-2 p-1 px-2 rounded-full text-xs ${tag.class}'>
+            <span class={`flex items-center flex-row gap-2 p-1 px-2 rounded-full text-xs ${tag.class}`}>
               <tag.icon />
               {tag.name}
             </span>
