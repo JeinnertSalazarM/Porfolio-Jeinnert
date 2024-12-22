@@ -3,11 +3,13 @@ import Badge from "../components/Badge.astro";
 import Experience from "../components/Experience.astro";
 import Footer from "../components/Footer.astro";
 import Projects from "../components/Projects.astro";
+import Skills from "../components/Skills.astro";
 import Case from "../icons/Case.astro";
 import Code from "../icons/Code.astro";
 import Github from "../icons/Github.astro";
 import Linkedin from "../icons/Linkedin.astro";
 import Mail from "../icons/Mail.astro";
+import Tools from "../icons/Tools.astro";
 import Whastapp from "../icons/Whastapp.astro";
 
 import Layout from "../layouts/Layout.astro";
@@ -42,7 +44,7 @@ import Layout from "../layouts/Layout.astro";
           reales.
         </h2>
 
-        <nav class="flex gap-4 mt-8  justify-center	flex-wrap">
+        <nav class="flex gap-4 mt-8 justify-center flex-wrap">
           <a
             class="rounded-full border border-white/10 flex justify-center items-center text-xs lg:text-base gap-x-4 mt-4 p-1 px-2 lg:py-2 lg:px-4 hover:scale-110 hover:bg-green-300 hover:text-black transition-transform"
             href=""
@@ -56,7 +58,6 @@ import Layout from "../layouts/Layout.astro";
           <a
             class="rounded-full border border-white/10 flex justify-center items-center text-xs lg:text-base gap-x-4 mt-4 p-1 px-2 lg:py-2 lg:px-4 hover:scale-110 hover:bg-green-300 hover:text-black transition-transform"
             href="https://wa.me/573156275686?text=Hola%20vi%20tu%20portafolio%20y%20me%20gustaría%20trabajar%20contigo
-
 "
             ><Whastapp>WhatsApp</Whastapp>
           </a>
@@ -70,19 +71,27 @@ import Layout from "../layouts/Layout.astro";
 
       <section id="proyectos" class="w-full lg:w-[740px] mx-auto py-10">
         <h2 class="text-2xl font-semibold mb-6 flex gap-x-2 items-center">
-          <Code class="size-6" /> Proyectos
+          <Code class="size-12" /> Proyectos
         </h2>
         <Projects />
       </section>
 
       <section id="experiencia" class="w-full lg:w-[740px] mx-auto py-10">
         <h2 class="text-2xl font-semibold mb-6 flex gap-x-2 items-center">
-          <Case class="size-10" /> Experiencia
+          <Case class="size-12" /> Experiencia
         </h2>
         <Experience />
       </section>
 
-      <Footer />
+      <section id="habilidades" class="w-full lg:w-[740px] mx-auto py-10">
+        <h2 class="text-2xl font-semibold mb-6 flex gap-x-2 items-center">
+          <Tools class="size-12" /> Habilidades
+        </h2>
+        <Skills />
+      </section>
+
+      
     </section>
+    <Footer />
   </main>
 </Layout>
