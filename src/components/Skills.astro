@@ -13,18 +13,22 @@ import Tailwind from "../icons/Tailwind.astro";
 ---
 
 <nav class="flex flex-row gap-x-5 xl:gap-x-10 opacity-80 justify-center">
-  <ul class="flex flex-col gap-y-2 justify-center items-center text-center">
-    <h2 class="font-semibold text-2xl text-green-300 mb-5">Frontend</h2>
+  <ul class="flex flex-col  gap-y-2 justify-center items-center text-center">
+    <h2 class="font-bold text-2xl text-green-300 mb-5">Frontend</h2>
     
+    <ul class="flex flex-col md:flex-row lg:flex-row  xl:flex-row  gap-y-2 text-center">
       <li><Html class="size-20">HTML</Html></li>
       <li><CSS class="size-20" />CSS</li>
       <li><JavaScript class="size-20" />JavaScript</li>
-    
-
-    
+    </ul>
+    <ul class="flex flex-col md:flex-row lg:flex-row  xl:flex-row  gap-y-2 text-center">
       <li><React class="size-20" />React</li>
       <li><Boostrap class="size-20" />Boostrap</li>
       <li><Tailwind class="size-20" />Tailwind</li>
+    
+    </ul>
+
+    
     
   </ul>
 
