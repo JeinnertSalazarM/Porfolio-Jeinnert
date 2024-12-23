@@ -21,19 +21,22 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
   <main class="px-3">
     <section class="w-full lg:w-[740px] mx-auto py-44 pb-20">
-      <img
-        class="rounded-full w-12 h-12"
-        src="https://avatars.githubusercontent.com/u/178427539?v=4"
-        alt="Jeinnert Salazar Foto"
-      />
-      <h1
-        class="text-white sm:text-1xl text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-5 pb-6 lg:pb-10  sm:gap-1"
-      >
-        Hey, Soy Jeinnert
-        <div class="flex justify-center items-center">
+      <div class="flex justify-start items-center gap-x-10 pb-6 lg:pb-10 mx-3">
+        <img
+          class="rounded-full size-28 lg:size-32 lg:h-32 border-4 border-green-600"
+          src="https://avatars.githubusercontent.com/u/178427539?v=4"
+          alt="Jeinnert Salazar Foto"
+        >
+        <div class="">
           <Badge>Disponible para trabajar </Badge>
         </div>
-        <h2 class="text-xl lg:text-sm text-pretty max-w-[700px] mx-3">
+     </div>
+      <h1
+        class="text-white  text-3xl md:text-3xl lg:text-5xl ml-3 font-bold flex flex-row gap-5 pb-6 lg:pb-10 sm:gap-1"
+      >
+        Hey, Soy Jeinnert
+       
+        <h2 class="text-xl text-wrap max-w-[700px] mx-3">
           <span class="text-green-300 opacity-80">Desarrollador Fullstack</span>
           de Colombia, apasionado por la creación de aplicaciones y soluciones innovadoras
           que combinan diseño intuitivo y funcionalidad robusta. <span
@@ -89,8 +92,6 @@ import Layout from "../layouts/Layout.astro";
         </h2>
         <Skills />
       </section>
-
-      
     </section>
     <Footer />
   </main>
