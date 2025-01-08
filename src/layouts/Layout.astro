@@ -1,5 +1,6 @@
 ---
 import "@fontsource/onest/400.css";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import Header from "../components/Header.astro";
 ---
 
@@ -11,14 +12,17 @@ import Header from "../components/Header.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Portfolio Jeinnert</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
   </head>
   <body class="bg-neutral-950">
     <div
-      class="absolute top-0 z-[-2] h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      class="top-0 z-[-2] absolute bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] bg-neutral-950 w-full h-full"
     >
     </div>
-
+    <SpeedInsights />
     <Header />
     <slot />
   </body>
