@@ -1,5 +1,6 @@
 ---
 import "@fontsource/onest/400.css";
+import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Header from "../components/Header.astro";
 ---
@@ -16,6 +17,7 @@ import Header from "../components/Header.astro";
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
     />
+    <Analytics />
   </head>
   <body class="bg-neutral-950">
     <div
