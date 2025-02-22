@@ -1,19 +1,44 @@
+---
+import type { languageList } from "../i18n/ui";
+import { useTranslations } from "../i18n/utils";
+
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(
+  currentLang as keyof typeof languageList
+);
+---
+
 <header
-  class="text-white flex justify-center items-center flex-wrap py-5 xl:w-full
-  text-sm md:text-1xl
-  md:w-[1120px] lg:w-[1120] sticky top-0"
+  id="navbar"
+  class="top-0 z-10 sticky flex flex-wrap justify-center items-center py-5 md:w-[1120px] lg:w-[1120] xl:w-full text-white md:text-1xl text-sm transition-all duration-300"
 >
   <nav class="flex flex-row gap-x-3 xl:gap-x-10 opacity-80">
-    <a class="hover:text-green-300 transition" href="#proyectos">Proyectos</a>
-    <a class="hover:text-green-300 transition" href="#experiencia"
-      >Experiencia</a
+    <a class="hover:text-green-300" href="#proyectos">
+      {translateLabels("nav.projects")}</a
     >
-    <a class="hover:text-green-300 transition" href="#tecnologias"
-      >Tecnologias</a
+    <a class="hover:text-green-300" href="#experiencia"
+      >{translateLabels("nav.experience")}</a
     >
-    <a
-      class="hover:text-green-300 transition"
-      href="mailto:stevensalazsr@gmail.com">Contacto</a
+    <a class="hover:text-green-300" href="#tecnologias"
+      >{translateLabels("nav.stack")}</a
+    >
+    <a class="hover:text-green-300" href="mailto:stevensalazsr@gmail.com"
+      >{translateLabels("nav.contact")}</a
     >
   </nav>
 </header>
+
+<script>
+  //navbar
+
+  document.addEventListener("scroll", () => {
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+      if (window.scrollY > 100) {
+        navbar.classList.add("bg-neutral-950");
+      } else {
+        navbar.classList.remove("bg-neutral-950");
+      }
+    }
+  });
+</script>

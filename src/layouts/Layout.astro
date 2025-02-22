@@ -3,16 +3,23 @@ import "@fontsource/onest/400.css";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Header from "../components/Header.astro";
+import type { languageList } from "../i18n/ui";
+import { useTranslations } from "../i18n/utils";
+
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(
+  currentLang as keyof typeof languageList
+);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="{currentLang}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Portfolio Jeinnert</title>
+    <title>{translateLabels("meta.title")}</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"

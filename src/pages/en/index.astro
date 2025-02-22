@@ -1,0 +1,114 @@
+---
+import Badge from "../../components/Badge.astro";
+import Experience from "../../components/Experience.astro";
+import Footer from "../../components/Footer.astro";
+import Projects from "../../components/Projects.astro";
+import Skills from "../../components/Skills.astro";
+import type { languageList } from "../../i18n/ui";
+import { useTranslations } from "../../i18n/utils";
+import Case from "../../icons/Case.astro";
+import Code from "../../icons/Code.astro";
+import Github from "../../icons/Github.astro";
+import Linkedin from "../../icons/Linkedin.astro";
+import Mail from "../../icons/Mail.astro";
+import Tools from "../../icons/Tools.astro";
+import Whastapp from "../../icons/Whastapp.astro";
+
+import Layout from "../../layouts/Layout.astro";
+
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(
+  currentLang as keyof typeof languageList
+);
+---
+
+<Layout>
+  <main class="px-3">
+    <section class="mx-auto py-20 pb-20 w-full lg:w-[740px]">
+      <div class="flex justify-start items-center gap-x-10 mx-3 pb-6 lg:pb-10">
+        <img
+          class="border-4 border-green-600 rounded-full lg:h-32 size-28 lg:size-32"
+          src="https://avatars.githubusercontent.com/u/178427539?v=4"
+          alt="Jeinnert Salazar Foto"
+        />
+        <div class="">
+          <Badge>{translateLabels("main.badge")}</Badge>
+        </div>
+      </div>
+      <h1
+        class="flex flex-row gap-5 sm:gap-1 ml-3 pb-6 lg:pb-10 font-bold text-white text-3xl md:text-3xl lg:text-5xl"
+      >
+        {translateLabels("main.title")}
+
+        <h2 class="opacity-80 mx-3 max-w-[700px] text-white text-xl text-wrap">
+          <span class="opacity-80 text-green-300"
+            >{translateLabels("desc.span1")}</span
+          >
+          {translateLabels("desc.span2")}
+          <span class="opacity-80 text-green-300"
+            >{translateLabels("desc.span3")}</span
+          >
+          {translateLabels("desc.span4")}<span
+            class="opacity-80 text-green-300"
+          >
+            {translateLabels("desc.span5")}
+          </span>{translateLabels("desc.span6")}
+        </h2>
+
+        <nav
+          class="flex flex-wrap justify-center gap-4 opacity-80 mt-8 text-white"
+        >
+          <a
+            class="flex justify-center items-center gap-x-4 hover:bg-green-300 mt-4 p-1 px-2 lg:px-4 lg:py-2 border border-white/10 rounded-full hover:text-black text-xs lg:text-base hover:scale-110 transition-transform"
+            href="https://www.linkedin.com/in/jeinnert-steve-salazar-medina-039917222/"
+            ><Linkedin>LinkedIn</Linkedin>
+          </a>
+          <a
+            class="flex justify-center items-center gap-x-4 hover:bg-green-300 mt-4 p-1 px-2 lg:px-4 lg:py-2 border border-white/10 rounded-full hover:text-black text-xs lg:text-base hover:scale-110 transition-transform"
+            href="https://github.com/JeinnertSalazarM"
+            ><Github>GitHub</Github></a
+          >
+          <a
+            class="flex justify-center items-center gap-x-4 hover:bg-green-300 mt-4 p-1 px-2 lg:px-4 lg:py-2 border border-white/10 rounded-full hover:text-black text-xs lg:text-base hover:scale-110 transition-transform"
+            href="https://wa.me/573156275686?text=Hola%20vi%20tu%20portafolio%20y%20me%20gustaría%20trabajar%20contigo
+"
+            ><Whastapp>WhatsApp</Whastapp>
+          </a>
+          <a
+            class="flex justify-center items-center gap-x-4 hover:bg-green-300 mt-4 p-1 px-2 lg:px-4 lg:py-2 border border-white/10 rounded-full hover:text-black text-xs lg:text-base hover:scale-110 transition-transform"
+            href="mailto:stevensalazsr@gmail.com"
+            ><Mail>stevensalazsr@gmail.com</Mail>
+          </a>
+        </nav>
+      </h1>
+
+      <section id="proyectos" class="mx-auto py-10 w-full lg:w-[740px]">
+        <h2
+          class="flex items-center gap-x-2 opacity-80 mb-6 font-semibold text-white text-2xl"
+        >
+          <Code class="size-12" /> Proyectos
+        </h2>
+        <Projects />
+      </section>
+
+      <section id="experiencia" class="mx-auto py-10 w-full lg:w-[740px]">
+        <h2
+          class="flex items-center gap-x-2 opacity-80 mb-6 font-semibold text-white text-2xl"
+        >
+          <Case class="size-12" /> Experiencia
+        </h2>
+        <Experience />
+      </section>
+
+      <section id="tecnologias" class="mx-auto py-10 w-full lg:w-[740px]">
+        <h2
+          class="flex items-center gap-x-2 opacity-80 mb-6 font-semibold text-white text-2xl"
+        >
+          <Tools class="size-12" /> Tecnologias
+        </h2>
+        <Skills />
+      </section>
+    </section>
+    <Footer />
+  </main>
+</Layout>

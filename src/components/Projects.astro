@@ -1,4 +1,5 @@
 ---
+import Astroicon from "../icons/Astroicon.astro";
 import Boostrap from "../icons/Boostrap.astro";
 import CSS from "../icons/CSS.astro";
 import Django from "../icons/Django.astro";
@@ -24,8 +25,8 @@ const TAGS = {
     icon: CSS,
   },
   TailwindCSS: {
-    name: "Tailwind CSS",
-    class: "bg-teal-500 text-white",
+    name: "TailwindCSS",
+    class: "bg-blue-400 text-white",
     icon: Tailwind,
   },
   JavaScript: {
@@ -43,9 +44,14 @@ const TAGS = {
     class: "bg-blue-400 text-white",
     icon: Mysql,
   },
+  Astro: {
+    name: "Astro",
+    class: "bg-purple-600 text-white",
+    icon: Astroicon,
+  },
 };
 
-const PROYECTS = [
+const PROJECTS = [
   {
     title: "Gestor de Proyectos",
     description:
@@ -66,17 +72,17 @@ const PROYECTS = [
 ---
 
 {
-  PROYECTS.map(({ title, description, image, tags }) => (
+  PROJECTS.map(({ title, description, image, tags }) => (
     <article>
-      <h3 class="text-2xl font-semibold text-green-300 mb-3 mx-3 ">{title}</h3>
-      <p class="  text-white opacity-80 text-lg   m-3 mb-4 text-pretty">
+      <h3 class="mx-3 mb-3 font-semibold text-green-300 text-2xl">{title}</h3>
+      <p class="opacity-80 m-3 mb-4 text-white text-lg text-pretty">
         {description}
       </p>
-      <ul class="flex gap-2 mb-4 flex-row  justify-center flex-wrap">
+      <ul class="flex flex-row flex-wrap justify-center gap-2 mb-4">
         {tags.map((tag) => (
           <li>
             <span
-              class={`  opacity-80 flex items-center flex-row gap-1 p-1 px-2 rounded-full text-xs ${tag.class}`}
+              class={`  opacity-80 flex items-center flex-row gap-2 p-2 px-2 rounded-full text-xs ${tag.class}`}
             >
               <tag.icon />
               {tag.name}
@@ -85,7 +91,7 @@ const PROYECTS = [
         ))}
       </ul>
       <img
-        class="rounded shadow-2xl shadow-white/10"
+        class="shadow-2xl shadow-white/10 rounded"
         src={image}
         alt={`Captura de pantalla del Proyecto ${image}`}
       />
