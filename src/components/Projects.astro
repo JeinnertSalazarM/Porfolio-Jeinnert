@@ -9,21 +9,13 @@ import Mysql from "../icons/Mysql.astro";
 import Tailwind from "../icons/Tailwind.astro";
 
 const TAGS = {
-  HTML: {
-    name: "HTML",
-    class: "bg-orange-500 text-white",
-    icon: Html,
-  },
+  HTML: { name: "HTML", class: "bg-orange-500 text-white", icon: Html },
   Bootstrap: {
     name: "Bootstrap",
     class: "bg-purple-500 text-white",
     icon: Boostrap,
   },
-  CSS: {
-    name: "CSS",
-    class: "bg-blue-500 text-white",
-    icon: CSS,
-  },
+  CSS: { name: "CSS", class: "bg-blue-500 text-white", icon: CSS },
   TailwindCSS: {
     name: "TailwindCSS",
     class: "bg-blue-400 text-white",
@@ -34,21 +26,9 @@ const TAGS = {
     class: "bg-yellow-500 text-white",
     icon: JavaScript,
   },
-  Django: {
-    name: "Django",
-    class: "bg-green-400 text-white",
-    icon: Django,
-  },
-  Mysql: {
-    name: "MySQL",
-    class: "bg-blue-400 text-white",
-    icon: Mysql,
-  },
-  Astro: {
-    name: "Astro",
-    class: "bg-purple-600 text-white",
-    icon: Astroicon,
-  },
+  Django: { name: "Django", class: "bg-green-400 text-white", icon: Django },
+  Mysql: { name: "MySQL", class: "bg-blue-400 text-white", icon: Mysql },
+  Astro: { name: "Astro", class: "bg-purple-600 text-white", icon: Astroicon },
 };
 
 const PROJECTS = [
@@ -56,9 +36,7 @@ const PROJECTS = [
     title: "Gestor de Proyectos",
     description:
       "Aplicación web desarrollada con Django para organizar y gestionar proyectos de manera eficiente. Permite crear, supervisar y visualizar el progreso de proyectos en tiempo real, con una interfaz intuitiva y responsive diseñada con Bootstrap. Ideal para equipos que buscan simplicidad y control en sus procesos.",
-    link: "#",
-    github: "#",
-    image: "/projects/gestorproyectos.webp",
+    images: ["/projects/gestorproyectos.webp"],
     tags: [
       TAGS.HTML,
       TAGS.CSS,
@@ -68,21 +46,70 @@ const PROJECTS = [
       TAGS.Mysql,
     ],
   },
+
+  {
+    title:
+      "Aplicación Web para Registro de Parámetros de Lagos en Piscicultura",
+    description:
+      "Aplicación desarrollada para registrar diariamente valores de pH, temperatura, oxígeno disuelto y turbidez en lagos piscícolas. Incluye una vista con gráficos históricos generados con Chart.js para analizar la evolución de los parámetros y detectar variaciones críticas. El sistema reduce tareas manuales de monitoreo de más de 2 horas a menos de 10 minutos al día, facilitando un control ambiental más ágil y preciso en el cultivo.",
+    images: ["/projects/parametros_main.webp"],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JavaScript, TAGS.TailwindCSS, TAGS.Mysql],
+  },
+
+  {
+    title: "Sistema de Inventario de Alimento para Piscicultura",
+    description:
+      "Aplicación diseñada para automatizar el control de bultos de alimento en operaciones piscícolas, permitiendo registrar ingresos, consumos y generar reportes en tiempo real. La interfaz organiza los productos por tipo de pellet, facilitando el seguimiento por tamaño y lote. Incluye alertas automáticas de bajo stock y opciones de exportación a Excel para mejorar la trazabilidad. El sistema elimina el uso de cuadernos físicos y agiliza la consulta y gestión del inventario diario.",
+    images: ["/projects/inventario_piscicola1.webp"],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JavaScript, TAGS.TailwindCSS, TAGS.Mysql],
+  },
 ];
 ---
 
+<style>
+  .modal-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0 0 0 / 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+  }
+
+  .modal-bg.active {
+    display: flex;
+  }
+
+  .modal-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 10px;
+  }
+
+  .modal-bg.close-area {
+    cursor: pointer;
+  }
+</style>
+
+<div id="img-modal" class="modal-bg close-area">
+  <img id="modal-img" class="modal-img" />
+</div>
+
 {
-  PROJECTS.map(({ title, description, image, tags }) => (
-    <article>
+  PROJECTS.map(({ title, description, images, tags }) => (
+    <article class="mt-10">
       <h3 class="mx-3 mb-3 font-semibold text-green-300 text-2xl">{title}</h3>
+
       <p class="opacity-80 m-3 mb-4 text-white text-lg text-pretty">
         {description}
       </p>
+
       <ul class="flex flex-row flex-wrap justify-center gap-2 mb-4">
         {tags.map((tag) => (
           <li>
             <span
-              class={`  opacity-80 flex items-center flex-row gap-2 p-2 px-2 rounded-full text-xs ${tag.class}`}
+              class={`opacity-80 flex items-center flex-row gap-2 p-2 px-2 rounded-full text-xs ${tag.class}`}
             >
               <tag.icon />
               {tag.name}
@@ -90,11 +117,33 @@ const PROJECTS = [
           </li>
         ))}
       </ul>
-      <img
-        class="shadow-2xl shadow-white/10 rounded"
-        src={image}
-        alt={`Captura de pantalla del Proyecto ${image}`}
-      />
+
+      <div class="gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4">
+        {images.map((img) => (
+          <img
+            class="shadow-2xl shadow-white/10 rounded cursor-pointer"
+            src={img}
+            alt="Captura del Proyecto"
+            data-img={img}
+          />
+        ))}
+      </div>
     </article>
   ))
 }
+
+<script>
+  const modal = document.getElementById("img-modal");
+  const modalImg = document.getElementById("modal-img");
+
+  document.addEventListener("click", (e) => {
+    if (e.target.matches("img[data-img]")) {
+      modalImg.src = e.target.dataset.img;
+      modal.classList.add("active");
+    }
+
+    if (e.target === modal) {
+      modal.classList.remove("active");
+    }
+  });
+</script>
